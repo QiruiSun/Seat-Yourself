@@ -1,0 +1,13 @@
+<h1>Restaurants</h1>
+
+<% @restaurants.each do |r| %>
+<div class="list_restaurants">
+  Restaurant Name: <%= r.name %> <br>
+  <%= r.address %> <br>
+  <%= r.summary %> <br>
+  <%= r.open_hour %> <br>
+  <%= r.close_hour %> <br>
+  <p>$<%= r.price_range %></p>
+
+</div>
+<% end %>

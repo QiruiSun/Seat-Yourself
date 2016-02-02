@@ -1,0 +1,45 @@
+<%# TODO: PUT A DEFAULT VALUE FOR OPEN AND CLOSE HOUR %>
+
+
+<%= form_for @restaurant do |f| %>
+
+  <% if @restaurant.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+        <ul>
+        <% @restaurant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_area :address %>
+  </div>
+  <div class="field">
+    <%= f.label :summary%><br />
+    <%= f.text_area :summary %>
+  </div>
+  <div class="field">
+    <%= f.label :open_hour %><br />
+    <%= f.number_field :open_hour %>
+  </div>
+  <div class="field">
+    <%= f.label :close_hour %><br />
+    <%= f.number_field :close_hour %>
+  </div>
+  <div class="field">
+    <%= f.label :price_range %><br />
+    <%= f.text_field :price_range, :placeholder => "1-100"  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
