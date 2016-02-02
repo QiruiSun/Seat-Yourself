@@ -2,11 +2,11 @@
 
 <% @restaurants.each do |r| %>
 <div class="list_restaurants">
-  Restaurant Name: <%= r.name %> <br>
+  Restaurant Name: <%= link_to "#{r.name}", restaurant_path(r.id) %><br>
   <%= r.address %> <br>
   <%= r.summary %> <br>
-  <%= r.open_hour %> <br>
-  <%= r.close_hour %> <br>
+  <%= r.open_hour %> am -<%= r.close_hour %> pm<br>
+
   <p>$<%= r.price_range %></p>
 
 </div>
