@@ -9,4 +9,9 @@ class ApplicationController < ActionController::Base
     #code
   end
   helper_method :current_user
+
+  def user_is_owner
+    @user.owned_restaurants.any?
+#code
+  end
 end

@@ -1,0 +1,20 @@
+<h1>User Profile</h1>
+
+
+<h3><%= link_to "My restaurants", users_restaurants_path %></h3>
+
+
+
+<%= form_for [@users, @restaurant] do |f| %>
+<%= f.label :name %> <br>
+<%= f.text_field :name %> <br>
+<%= f.label :address %> <br>
+<%= f.text_field :address %> <br>
+<%= f.label :price_range %> <br>
+<%= f.text_field :price_range %> <br>
+<%= f.label :open_hour%> <br>
+<%= f.text_field :open_hour %> <br>
+<%= f.label :close_hour %> <br>
+<%= f.text_field :close_hour%> <br>
+<%= f.submit "Go" %> <br>
+<% end %>

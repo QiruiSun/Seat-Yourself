@@ -1,0 +1,6 @@
+<h1>Owned Restaurants</h1>
+
+<% @user.owned_restaurants.each do |r| %>
+  <%= r.name %> <br>
+  <%= r.address %> <br>
+<% end %>
