@@ -8,5 +8,21 @@
 <h4>Business Hour: </h4><%= @restaurant.open_hour  %> - <%= @restaurant.close_hour %> <br>
 
 </div>
+<br>
+
+<% if current_user %>
+<%= form_for [@restaurant, @reservation] do |f| %>
+
+
+  <%= f.label :time %> <br>
+  <%= f.datetime_local_field :time %> <br>
+  <br>
+  <%= f.label :party_size %> <br>
+  <%= f.number_field :party_size %> <br>
+  <%= f.submit "Reserve" %>
+
+<% end %>
+
+<% end %>
 
 <%= link_to "Edit", edit_restaurant_path(@restaurant)  %> | <%= link_to "Delete", @restaurant, method: :delete, data: {confirm: "Are you sure you want to close this restaurant"} %>

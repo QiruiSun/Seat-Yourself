@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-  before_action :current_user only: [:new, :create]
 
   def new
     @user = User.new
@@ -19,8 +18,7 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
-#code
-  end
 
+  end
 
 end

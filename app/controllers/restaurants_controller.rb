@@ -29,7 +29,11 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    #code
+
+
+    if current_user
+      @reservation = @restaurant.reservations.build
+    end
   end
 
   def create
@@ -44,7 +48,7 @@ class RestaurantsController < ApplicationController
   end
 
   def find_restaurant
-  @restaurant = Restaurant.find(params[:id])#code
+    @restaurant = Restaurant.find(params[:id])
   end
 
   private
