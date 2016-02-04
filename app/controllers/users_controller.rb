@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  def index
+    @user = User.find(current_user.id)
+    @restaurant = @user.restaurants.build
+    #code
+  end
 
   def new
     @user = User.new
@@ -13,6 +18,12 @@ class UsersController < ApplicationController
       render :new
     end
 
+  end
+
+  def show
+    @user = User.find(current_user.id)
+
+    #code
   end
 
   private

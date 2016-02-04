@@ -11,9 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203221724) do
+ActiveRecord::Schema.define(version: 20160203223707) do
 
   create_table "reservations", force: :cascade do |t|
+<<<<<<< HEAD
     t.time  "time"
     t.integer  "party_size"
     t.integer  "user_id"

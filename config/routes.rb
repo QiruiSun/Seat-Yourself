@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'restaurants#index'
   # get 'reservations/index'
   #
   # get 'reservations/new'
@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   # get 'sessions/new'
   #
   # get 'sessions/destroy'
+  resources :users, only: :index
+  get 'users/restaurants' => 'users#show'
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
   resources :sessions, only: [:new, :create, :destroy]
@@ -28,7 +30,7 @@ Rails.application.routes.draw do
   resources :reservations, only: [:new, :edit]
 
   resources :users, only: [:new, :create, :show] do
-    resources :reservations, only: [:show, :destroy, :upadate, :index]
+    resources :reservations, only: [:show, :destroy, :update, :index]
   end
   resources :restaurants do
     resources :reservations, only: :create
