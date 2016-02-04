@@ -14,7 +14,7 @@
 <%= form_for [@restaurant, @reservation] do |f| %>
 
   <%= f.label :date %> <br>
-  <%= f.date_select :date %> <br>
+  <%= f.datetime_local_field :date %> <br>
   <br>
 
   <%= f.label :time %> <br>

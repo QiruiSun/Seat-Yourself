@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20160203221724) do
 
   create_table "reservations", force: :cascade do |t|
-    t.integer  "time"
+    t.time  "time"
     t.integer  "party_size"
     t.integer  "user_id"
     t.integer  "restaurant_id"
