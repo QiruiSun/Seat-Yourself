@@ -1,9 +1,7 @@
 class ReservationsController < ApplicationController
 
-  before_action :load_user, only: :index
-
   def index
-    @reservations = @user.reservations
+    @reservations = current_user.reservations
   end
 
   def new
@@ -11,8 +9,18 @@ class ReservationsController < ApplicationController
 
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
+
     @reservation = @restaurant.reservations.build(reservation_params)
+
+    if @restaurant.open_seats?(reservation_params[:date], reservation_params[:time], reservation_params[:party_size]) != true
+      flash[:alert] = "Invalid Input!"
+      render 'restaurant/show'
+      return
+    end
+
     @reservation.user = current_user
+
+
     if @reservation.save
       redirect_to user_reservations_path(current_user.id), notice: "Your reservation is confirmed!"
     else
@@ -38,9 +46,7 @@ class ReservationsController < ApplicationController
   # def find_reservation
   # @reservation = Reservation.find(params[:id])#code
   # end
-  def load_user
-    @user = User.find(session[:user_id])
-  end
+
   private
   def reservation_params
     params.require(:reservation).permit(:time, :party_size)
