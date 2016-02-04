@@ -13,9 +13,7 @@
 <% if current_user %>
   <%= form_for [@restaurant, @reservation] do |f| %>
 
-    <%= f.label :date %> <br>
-    <%= f.date_select :date %> <br>
-    <br>
+
 
     <%= f.label :time %> <br>
     <%= f.time_select :time, {ampm: true, :discard_minute => true, start_hour: 11, end_hour: 19} %> <br>
@@ -33,11 +31,11 @@
       <% else %>
         <h4>Reservations</h4>
           <ol>
-            <% @reservations.each do |r| %>
+            <% @restaurant.reservations.each do |r| %>
               <li>
                <div class="list_reservations">
                  <br>
-                   User:  <%= r.user %> <br>
+                   User:  <%= r.user.email %> <br>
                    Reservation time: <%= r.time %> <br>
                    Party_size: <%= r.party_size %> <br>
                    Restaurant: <%= r.restaurant.name %> <br>

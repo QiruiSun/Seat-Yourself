@@ -30,7 +30,7 @@ class RestaurantsController < ApplicationController
 
   def show
     if current_user
-      @reservation = @restaurant.reservations.build
+      @reservation = Reservation.new
     end
     if user_is_owner
       @reservations = @restaurant.reservations
