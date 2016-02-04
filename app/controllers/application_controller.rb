@@ -16,5 +16,5 @@ class ApplicationController < ActionController::Base
   end
   helper_method :user_is_owner
 
-  
+
 end
