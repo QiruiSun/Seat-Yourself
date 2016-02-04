@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   #
   # get 'sessions/destroy'
   resources :users, only: :index
+  # post'users/restaurants' => 'restaurants#create'
   get 'users/restaurants' => 'users#show'
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'

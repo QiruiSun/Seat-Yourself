@@ -11,46 +11,46 @@
 <br>
 
 <% if current_user %>
+  <%= form_for [@restaurant, @reservation] do |f| %>
 
-<%= form_for [@restaurant, @reservation] do |f| %>
+    <%= f.label :date %> <br>
+    <%= f.date_select :date %> <br>
+    <br>
 
-  <%= f.label :date %> <br>
-  <%= f.datetime_local_field :date %> <br>
-  <br>
-
-  <%= f.label :time %> <br>
-
-  <!-- <%= f.datetime_select :time %> <br> -->
-  <%= f.datetime_local_field :time, {discard_minute: true, min: Date.today} %> <br>
-
-  <%= f.label :party_size %> <br>
-  <%= f.number_field :party_size %> <br>
-  <%= f.submit "Reserve" %>
-
+    <%= f.label :time %> <br>
+    <%= f.time_select :time, {ampm: true, :discard_minute => true, start_hour: 11, end_hour: 19} %> <br>
+    <br>
+    <%= f.label :party_size %> <br>
+    <%= f.number_field :party_size %> <br>
+    <%= f.submit "Reserve" %>
+  <% end %>
 <% end %>
 
   <% if user_is_owner %>
     <%= link_to "Edit", edit_restaurant_path(@restaurant)  %> | <%= link_to "Delete", @restaurant, method: :delete, data: {confirm: "Are you sure you want to close this restaurant"} %>
-    <h4>Reservations</h4>
-      <ol>
-        <% @reservations.each do |r| %>
-          <li>
-           <div class="list_reservations">
-             <br>
-             User:  <%= r.user_id %> <br>
-             Reservation time: <%= r.time %> <br>
-             Party_size: <%= r.party_size %> <br>
-             Restaurant: <%= r.restaurant.name %> <br>
-             Restaurant Address: <%= r.restaurant.address %> <br>
-           <br>
+      <% if @reservations.first.user_id == nil %>
+         <h4>No Reservation</h4>
+      <% else %>
+        <h4>Reservations</h4>
+          <ol>
+            <% @reservations.each do |r| %>
+              <li>
+               <div class="list_reservations">
+                 <br>
+                   User:  <%= r.user %> <br>
+                   Reservation time: <%= r.time %> <br>
+                   Party_size: <%= r.party_size %> <br>
+                   Restaurant: <%= r.restaurant.name %> <br>
+                   Restaurant Address: <%= r.restaurant.address %> <br>
+                 <br>
 
-           </div>
-          </li>
-            <br>
-            <br>
+               </div>
+              </li>
+                <br>
+                <br>
 
-        <% end %>
-      </ol>
-  <% else %>
+            <% end %>
+          </ol>
+      <% end %>
 
   <% end %>
