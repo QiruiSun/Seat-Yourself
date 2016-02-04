@@ -5,9 +5,8 @@
 <% @reservations.each do |r| %>
    <li>
     <div class="list_reservations">
-    Date:  <%= r.date %> <br>
 
-    Reservation time: <%= r.time %> <br>
+    Reservation time: <%= r.time.strftime("%A, %d %b %Y %l:%M %p") %> <br>
     Party_size: <%= r.party_size %> <br>
     Restaurant: <%= r.restaurant.name %> <br>
     Restaurant Address: <%= r.restaurant.address %> <br>
