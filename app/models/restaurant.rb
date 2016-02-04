@@ -15,4 +15,5 @@ class Restaurant < ActiveRecord::Base
   end
 
 
+
 end
