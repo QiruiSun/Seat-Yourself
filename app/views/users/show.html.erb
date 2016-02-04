@@ -1,6 +1,12 @@
 <h1>Owned Restaurants</h1>
-
+<ol>
 <% @user.owned_restaurants.each do |r| %>
-  <%= r.name %> <br>
-  <%= r.address %> <br>
+  <li>
+    <strong>Name :</strong><%= r.name %> <br>
+    <%= r.address %> <br>
+    <%= r.price_range %> <br>
+    <%= r.summary %> <br>
+    <%= link_to "Resevations", restaurant_path(r) %> <br>
+  </li> <br>
 <% end %>
+</ol>

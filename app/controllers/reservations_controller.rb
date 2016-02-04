@@ -41,9 +41,10 @@ class ReservationsController < ApplicationController
   def load_user
     @user = User.find(session[:user_id])
   end
+  
   private
   def reservation_params
-    params.require(:reservation).permit(:time, :party_size)
+    params.require(:reservation).permit(:date, :time, :party_size)
     #code
   end
 end

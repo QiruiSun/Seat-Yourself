@@ -5,13 +5,16 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
-    @current_user = User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
     #code
   end
   helper_method :current_user
 
   def user_is_owner
-    @user.owned_restaurants.any?
+    @restaurant.owner_id == current_user.id
 #code
   end
+  helper_method :user_is_owner
+
+  
 end

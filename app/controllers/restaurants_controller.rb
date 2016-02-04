@@ -34,6 +34,10 @@ class RestaurantsController < ApplicationController
     if current_user
       @reservation = @restaurant.reservations.build
     end
+    if user_is_owner
+      @reservations = @restaurant.reservations
+
+    end
   end
 
   def create
@@ -49,7 +53,7 @@ class RestaurantsController < ApplicationController
       else
         render :new
       end
-  
+
     #code
   end
 
