@@ -28,26 +28,29 @@
 
   <% if user_is_owner %>
     <%= link_to "Edit", edit_restaurant_path(@restaurant)  %> | <%= link_to "Delete", @restaurant, method: :delete, data: {confirm: "Are you sure you want to close this restaurant"} %>
-    <h4>Reservations</h4>
-      <ol>
-        <% @reservations.each do |r| %>
-          <li>
-           <div class="list_reservations">
-             <br>
-             User:  <%= r.user_id %> <br>
-             Reservation time: <%= r.time %> <br>
-             Party_size: <%= r.party_size %> <br>
-             Restaurant: <%= r.restaurant.name %> <br>
-             Restaurant Address: <%= r.restaurant.address %> <br>
-           <br>
+      <% if @reservations.first.user_id == nil %>
+         <h4>No Reservation</h4>
+      <% else %>
+        <h4>Reservations</h4>
+          <ol>
+            <% @reservations.each do |r| %>
+              <li>
+               <div class="list_reservations">
+                 <br>
+                   User:  <%= r.user.email %> <br>
+                   Reservation time: <%= r.time %> <br>
+                   Party_size: <%= r.party_size %> <br>
+                   Restaurant: <%= r.restaurant.name %> <br>
+                   Restaurant Address: <%= r.restaurant.address %> <br>
+                 <br>
 
-           </div>
-          </li>
-            <br>
-            <br>
+               </div>
+              </li>
+                <br>
+                <br>
 
-        <% end %>
-      </ol>
-  <% else %>
+            <% end %>
+          </ol>
+      <% end %>
 
   <% end %>
