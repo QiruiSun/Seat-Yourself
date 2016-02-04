@@ -31,7 +31,6 @@ class RestaurantsController < ApplicationController
   def show
     if current_user
       @reservation = @restaurant.reservations.build
-      # @reservation = Reservation.new(restaurant: @restaurant)
     end
     if user_is_owner
       @reservations = @restaurant.reservations
@@ -39,18 +38,17 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    if user_is_owner
+
+    if current_user
       @user = User.find(current_user)
       @restaurant = @user.owned_restaurants.build(restaurant_params)
-
-    else
-      @restaurant = Restaurant.new(restaurant_params)
-    end
-      if @restaurant.save
+        if @restaurant.save
         redirect_to restaurants_path
-      else
+        else
         render :new
-      end
+        end
+    end
+
 
     #code
   end
