@@ -19,8 +19,10 @@
   <br>
 
   <%= f.label :time %> <br>
-  <%= f.time_select :time, {ampm: true, :discard_minute => true, start_hour: 11, end_hour: 19} %> <br>
-  <br>
+
+  <!-- <%= f.datetime_select :time %> <br> -->
+  <%= f.datetime_local_field :time, {discard_minute: true, min: Date.today} %> <br>
+
   <%= f.label :party_size %> <br>
   <%= f.number_field :party_size %> <br>
   <%= f.submit "Reserve" %>
