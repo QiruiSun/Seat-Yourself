@@ -15,7 +15,8 @@
 
 
   <%= f.label :time %> <br>
-  <%= f.datetime_local_field :time %> <br>
+  <!-- <%= f.datetime_select :time %> <br> -->
+  <%= f.datetime_local_field :time, {discard_minute: true, min: Date.today} %> <br>
   <br>
   <%= f.label :party_size %> <br>
   <%= f.number_field :party_size %> <br>
