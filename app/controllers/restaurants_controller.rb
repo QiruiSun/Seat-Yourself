@@ -35,7 +35,6 @@ class RestaurantsController < ApplicationController
     end
     if user_is_owner
       @reservations = @restaurant.reservations
-
     end
   end
 
