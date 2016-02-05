@@ -14,6 +14,7 @@ class Reservation < ActiveRecord::Base
 
 
     end
+  end
 
   def remove_user_points
     self.user.points -= self.party_size * 100
