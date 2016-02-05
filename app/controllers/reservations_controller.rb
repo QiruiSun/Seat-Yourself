@@ -59,6 +59,8 @@ class ReservationsController < ApplicationController
     @restaurant.reservations.where(date: date, time: time).find_each do |reservation|
       counter += reservation.party_size.to_i
     end
+  end
+  
 
 
   private
