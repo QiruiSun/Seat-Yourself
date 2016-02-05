@@ -7,7 +7,8 @@ class RestaurantsController < ApplicationController
   end
 
   def index
-    @restaurants = Restaurant.all   #code
+    @restaurants = Restaurant.all
+    @categories = Category.all.sample(6)  #code
   end
 
   def edit

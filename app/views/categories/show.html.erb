@@ -1,0 +1,13 @@
+<h1><%=  @category.name %></h1>
+
+<% @category.restaurants.each do |c| %>
+
+<div class="list_restaurants_in_category">
+  <p>
+    <%= c.name %> <br>
+    <%= c.address %> <br>
+    <%= c.price_range %> <br>
+    <%= c.summary %> <br>
+  </p>
+</div>
+<% end %>

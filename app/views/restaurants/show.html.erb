@@ -27,7 +27,7 @@
 
   <% if user_is_owner %>
     <%= link_to "Edit", edit_restaurant_path(@restaurant)  %> | <%= link_to "Delete", @restaurant, method: :delete, data: {confirm: "Are you sure you want to close this restaurant"} %>
-      <% if @reservations == nil %>
+      <% if @restaurant.reservations == [] %>
          <h4>No Reservation</h4>
       <% else %>
         <h4>Reservations</h4>

@@ -5,8 +5,18 @@
 <% end %>
 <br>
 
+<div class="navi_c">
+<% @categories.each do |c| %>
+<div class="nav_category">
+  <%= link_to "#{c.name}", category_path(c.id) %>
+</div>
+<% end %>
+<div class="nav_category">
+  <%= link_to "See More", categories_url %>
+</div>
+</div>
 
-
+<div class="list_r">
 <% @restaurants.each do |r| %>
 <div class="list_restaurants">
   Restaurant Name: <%= link_to "#{r.name}", restaurant_path(r.id) %><br>
@@ -18,3 +28,4 @@
 
 </div>
 <% end %>
+</div>
