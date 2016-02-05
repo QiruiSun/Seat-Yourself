@@ -7,7 +7,15 @@ class RestaurantsController < ApplicationController
   end
 
   def index
-    @restaurants = Restaurant.all   #code
+    @restaurants = Restaurant.all
+    @categories = Category.all.sample(6)
+
+    if params[:search]
+        @restaurant_search = Restaurant.search(params[:search]).order("created_at DESC")
+
+    #
+      end  #code
+    
   end
 
   def edit

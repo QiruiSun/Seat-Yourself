@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   resources :sessions, only: [:new, :create, :destroy]
   # get 'users/new'
-  #
+
+  resources :categories
   # get 'users/create'
   resources :reservations, only: [:new, :edit]
 

@@ -1,0 +1,10 @@
+<h1>Categories</h1>
+
+
+<div class="navi_c">
+  <% @categories.each do |c| %>
+  <div class="nav_category">
+    <%= link_to "#{c.name}", category_path(c.id) %>
+  </div>
+  <% end %>
+</div>
