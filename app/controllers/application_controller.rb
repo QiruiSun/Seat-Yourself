@@ -11,10 +11,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def user_is_owner
-    @restaurant.owner_id == current_user.id
+    @restaurant.owner_id == current_user.id if current_user
 #code
   end
   helper_method :user_is_owner
 
-  
+
 end

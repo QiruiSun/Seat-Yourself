@@ -7,15 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header>
+
     <img class="logo" src="/images/drawing.png" />
-    <nav>
+
       <ul>
-        <li>Sign up</li>
-        <li>Log in</li>
+        <div class="user_info">
+          <p>
+            <% if current_user %>
+              Signed in as <%=  current_user.email %>. <br>
+              <%= link_to "Log out", logout_path %>
+            <% else %>
+              <%= link_to "Log in", login_path %> or <%= link_to "Sign up", new_user_path %>
+
+            <% end %>
+          </p>
+         </div>
       </ul>
-    </nav>
-  </header>
+
+  
   <% if flash[:notice] %>
     <p><%= flash[:notice]  %></p>
   <% end %>
@@ -26,17 +35,7 @@
 
 <%= yield %>
 
-  <div class="user_info">
-    <p>
-      <% if current_user %>
-        Signed in as <%=  current_user.email %>. <br>
-        <%= link_to "Log out", logout_path %>
-      <% else %>
-        <%= link_to "Log in", login_path %> or <%= link_to "Sign up", new_user_path %>
 
-      <% end %>
-    </p>
-   </div>
 
 </body>
 </html>
