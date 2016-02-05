@@ -1,5 +1,11 @@
 <h1>User Profile</h1>
 
+<h3>Points</h3> <span>Your points: <%= @user.points %> PTS</span>
+
+<p>
+  * Each successful reservation can earn you party size * 100 points! <br/>
+  ** Each reservation cancellation will deduct you party size * 100 points as well...
+</p>
 
 <h3><%= link_to "My restaurants", users_restaurants_path %></h3>
 
