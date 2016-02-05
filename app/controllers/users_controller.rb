@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to restaurants_path, notice: "Signed up"
+      redirect_to restaurants_path, notice: "Signed up; 100 loyalty points Added to account"
     else
       render :new
     end
