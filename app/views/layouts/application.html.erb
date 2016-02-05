@@ -7,6 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <img class="logo" src="/images/drawing.png" />
+    <nav>
+      <ul>
+        <li>Sign up</li>
+        <li>Log in</li>
+      </ul>
+    </nav>
+  </header>
   <% if flash[:notice] %>
     <p><%= flash[:notice]  %></p>
   <% end %>
