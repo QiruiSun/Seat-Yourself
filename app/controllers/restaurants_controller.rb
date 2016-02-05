@@ -11,8 +11,8 @@ class RestaurantsController < ApplicationController
 
     if params[:search]
       @restaurant_search = Restaurant.search(params[:search]).order("created_at DESC")
-    else
-      @restaurant_search = Restaurant.order("created_at DESC")
+    # else
+    #   @restaurant_search = Restaurant.order("created_at DESC")
     end  #code
   end
 

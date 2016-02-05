@@ -10,11 +10,12 @@
     <%= text_field_tag :search, params[:search], class: "span2", placeholder: "Search Restaurants" %>
     <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
     of using a Rails form helper -->
-    <button class="btn" type="submit"><i class="icon-search"></i></button>
+    <button class="btn" type="submit"></button>
   </div>
 <% end %>
 
 
+<% if @restaurant_search != nil %>
 <% @restaurant_search.each do |r| %>
   <b>
     <div class="search-results">
@@ -26,4 +27,5 @@
       <p>$<%= r.price_range %></p>
     </div>
   </b>
+<% end %>
 <% end %>
