@@ -1,8 +1,10 @@
 <h1>Restaurants</h1>
 
+<% if current_user %>
 <%= link_to "My Profile", users_path%> <br>
+<% end %>
 <br>
-<br>
+
 
 
 <% @restaurants.each do |r| %>

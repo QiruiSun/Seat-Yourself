@@ -6,6 +6,7 @@ class Restaurant < ActiveRecord::Base
   validates :name, :address, :price_range, :open_hour, :close_hour, presence: true
 
 
+
   
 
 
