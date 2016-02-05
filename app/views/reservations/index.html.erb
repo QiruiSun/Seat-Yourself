@@ -1,6 +1,8 @@
 <h1>Reservations</h1>
 
-
+<%= link_to "Back to home page", root_path%> <br>
+<br>
+<br>
 <ol>
 <% @reservations.each do |r| %>
    <li>
@@ -10,6 +12,9 @@
     Party_size: <%= r.party_size %> <br>
     Restaurant: <%= r.restaurant.name %> <br>
     Restaurant Address: <%= r.restaurant.address %> <br>
+    <!-- <%= link_to "Edit", edit_reservation_path(r)  %> |  -->
+    <%= link_to "Delete", user_reservation_path(r.user_id, r.id), method: :delete, data: {confirm: "Are you sure you want to cancel this reservation?"} %>
+
     <br>
 
     </div>
