@@ -12,7 +12,7 @@ class ReservationsController < ApplicationController
 
     @reservation = @restaurant.reservations.build(reservation_params)
     @reservation.user = current_user
-    
+
     # if open_seats?(reservation_params[:date], reservation_params[:time], reservation_params[:party_size]) != true
     #   flash[:alert] = "Invalid Input!"
     #   render 'restaurant/show'
@@ -33,6 +33,9 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to users_path
   end
 
   def update
@@ -47,6 +50,7 @@ class ReservationsController < ApplicationController
   # def find_reservation
   # @reservation = Reservation.find(params[:id])#code
   # end
+
   def open_seats?(date, time, requested_guests)
     counter = 0
     @restaurant.reservations.where(date: date, time: time).find_each do |reservation|
