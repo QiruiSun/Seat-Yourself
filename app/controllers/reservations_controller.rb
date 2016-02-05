@@ -1,7 +1,12 @@
 class ReservationsController < ApplicationController
 
   def index
+
     @reservations = current_user.reservations
+    # if current_user.owned_restaurants.any?
+    #     @own_restaurant = current_user.owned_restaurants
+    # end
+
   end
 
   def new
@@ -17,7 +22,7 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to user_reservations_path(current_user.id), notice: "Your reservation is confirmed!"
     else
-      flash[:alert] = "Invalid Input!"
+      flash[:alert] = "Sorry, too many people!"
       render 'restaurants/show'
     end
 

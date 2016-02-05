@@ -8,7 +8,8 @@ class Reservation < ActiveRecord::Base
     other_people = Reservation.where(:restaurant_id => self.restaurant_id, :time => self.time).sum(:party_size)
 
     if other_people + self.party_size > 100
-      errors.add(:base, "Sorry, too many people!")
+
+
     end
   end
 

@@ -7,9 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <%= link_to image_tag("/images/drawing.png"), root_url %>
 
-    <img class="logo" src="/images/drawing.png" />
-
+    <nav>
       <ul>
         <div class="user_info">
           <p>
@@ -23,8 +24,9 @@
           </p>
          </div>
       </ul>
+    </nav>
+  </header>
 
-  
   <% if flash[:notice] %>
     <p><%= flash[:notice]  %></p>
   <% end %>

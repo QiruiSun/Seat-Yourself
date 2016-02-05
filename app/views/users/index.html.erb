@@ -1,12 +1,16 @@
 <h1>User Profile</h1>
 
 
-<h3><%= link_to "My restaurants", users_restaurants_path %></h3>
+<h3><%= link_to "My Restaurants", users_restaurants_path %></h3>
 
 <br>
-<br>
+
+<h3><%= link_to "My Upcoming Reservations", user_reservations_path(current_user.id) %></h3>
+
 <br>
 
+
+<br>
 <h3>Want to Own a Restaurant?</h3>
 <%= form_for @restaurant do |f| %>
 <%= f.label :name %> <br>
