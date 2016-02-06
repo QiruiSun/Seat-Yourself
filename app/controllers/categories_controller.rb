@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
 
+
   def index
     @categories = Category.all
   end
@@ -15,7 +16,7 @@ class CategoriesController < ApplicationController
     else
       render :new
     end
-    
+
   end
 
   def show

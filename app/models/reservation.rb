@@ -12,7 +12,6 @@ class Reservation < ActiveRecord::Base
 
     if other_people + self.party_size > 100
 
-
     end
   end
 
