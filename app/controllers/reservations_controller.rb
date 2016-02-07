@@ -28,7 +28,7 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to user_reservations_path(current_user.id), notice: "Your reservation is confirmed!"
     else
-      flash[:alert] = "Sorry, too many people!"
+      flash[:alert] = "Sorry, already too many people at this time!"
       render 'restaurants/show'
     end
 
@@ -53,14 +53,14 @@ class ReservationsController < ApplicationController
   # def find_reservation
   # @reservation = Reservation.find(params[:id])#code
   # end
+  #
+  # def open_seats?(date, time, requested_guests)
+  #   counter = 0
+  #   @restaurant.reservations.where(date: date, time: time).find_each do |reservation|
+  #     counter += reservation.party_size.to_i
+  #   end
+  # end
 
-  def open_seats?(date, time, requested_guests)
-    counter = 0
-    @restaurant.reservations.where(date: date, time: time).find_each do |reservation|
-      counter += reservation.party_size.to_i
-    end
-  end
-  
 
 
   private

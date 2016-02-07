@@ -8,12 +8,15 @@ class Reservation < ActiveRecord::Base
   validate :less_than_max_occupancy
 
   def less_than_max_occupancy
-    other_people = Reservation.where(:restaurant_id => self.restaurant_id, :time => self.time).sum(:party_size)
+    already_taken = Reservation.where(:restaurant_id => self.restaurant_id, :time => self.time).sum(:party_size)
 
-    if other_people + self.party_size > 100
-
+    if already_taken + self.party_size > 100
+      errors.add(:party_size, "Too many!")
 
     end
+
+
+
   end
 
   def remove_user_points
