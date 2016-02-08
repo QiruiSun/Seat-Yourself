@@ -31,5 +31,3 @@ class Reservation < ActiveRecord::Base
     self.user.save
   end
 end
-
-end

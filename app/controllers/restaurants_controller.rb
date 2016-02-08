@@ -39,6 +39,7 @@ class RestaurantsController < ApplicationController
   def show
     if current_user
       @reservation = Reservation.new
+      @reserved = current_user.reservations.where(restaurant_id: @restaurant.id) != []
       @review = Review.new
     end
     if user_is_owner

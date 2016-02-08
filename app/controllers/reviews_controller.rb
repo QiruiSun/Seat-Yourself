@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :load_restaurant, only: [:create, :edit, :destroy, :show, :update]
+
   def show
     @review = Review.find(params[:id])
   end
@@ -8,7 +10,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
-      redirect_to restaurant_path, notice: 'Review has been created successfully!'
+      redirect_to restaurant_path(@restaurant.id), notice: 'Review has been created successfully!'
     else
       render 'restaurant/show'
     end
