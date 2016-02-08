@@ -30,5 +30,6 @@ class Reservation < ActiveRecord::Base
     self.user.points += self.party_size * 100
     self.user.save
   end
+end
 
 end

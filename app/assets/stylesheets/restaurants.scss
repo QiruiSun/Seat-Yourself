@@ -1,27 +1,27 @@
 .nav_category {
 
 
-  margin-right: auto;
-  margin-left: auto;
-  width: 10%;
   display:inline-block;
   text-align: center;
   padding: 20px;
+  position: absolute;;
 
 }
 
 .navi_c {
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  margin-bottom: 50px;
+
+  padding: 10% 10% 0 5%;
   align-content: center;
+  text-align: center;
+  z-index: 2;
 
 }
 
 .list_restaurants {
-  margin-right: auto;
-  margin-left: auto;
+  margin: 15px;
+  padding: 10px;
+  border-style: solid;
+  border-color: #0000;
   width: 33%;
   display:inline-block;
   text-align: center;
