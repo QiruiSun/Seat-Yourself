@@ -1,19 +1,17 @@
 .nav_category {
-
-
   display:inline-block;
   text-align: center;
-  padding: 20px;
-  position: absolute;;
+  width: 100%;
+  padding:30px;
 
 }
 
 .navi_c {
-
-  padding: 10% 10% 0 5%;
+  padding: auto;
   align-content: center;
   text-align: center;
   z-index: 2;
+  display: block;
 
 }
 
