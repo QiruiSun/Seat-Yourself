@@ -4023,6 +4023,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-inverse {
   background-color: #3b3a36;
   border-color: #3b3a36;
+  position: relative;
 }
 .navbar-inverse .navbar-brand {
   color: #999;

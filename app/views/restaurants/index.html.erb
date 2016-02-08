@@ -7,14 +7,16 @@
 
 <div class="navi_c">
 <% @categories.each do |c| %>
+
+
 <div class="nav_category">
+
   <%= link_to "#{c.name}", category_path(c.id) %>
-</div>
-<% end %>
-<div class="nav_category">
-<h1> Restaurants </h1>
+  <h1> Restaurants </h1>
 
 </div>
+<% end %>
+
 </div>
 
 <div class="list_r">
