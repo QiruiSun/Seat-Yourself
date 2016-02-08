@@ -1,4 +1,4 @@
-<h1>Restaurants</h1>
+
 
 <% if current_user %>
 <%= link_to "My Profile", users_path%> <br>
@@ -12,7 +12,8 @@
 </div>
 <% end %>
 <div class="nav_category">
-  <%= link_to "See More", categories_url %>
+<h1> Restaurants </h1>
+
 </div>
 </div>
 
@@ -24,6 +25,7 @@
       of using a Rails form helper -->
       <%= submit_tag "Search" %>
     </div>
+
   <% end %>
 
 
@@ -53,5 +55,7 @@
   <p>$<%= r.price_range %></p>
 
 </div>
+
 <% end %>
+<%= link_to "See More", categories_url %>
 </div>

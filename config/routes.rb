@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  # get 'reviews/show'
+  #
+  # get 'reviews/create'
+  #
+  # get 'reviews/destroy'
+
   root 'restaurants#index'
   # get 'reservations/index'
   #
@@ -33,9 +39,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show] do
     resources :reservations, only: [:show, :destroy, :update, :index]
+  
+
   end
   resources :restaurants do
     resources :reservations, only: :create
+    resources :reviews, only: [:show, :create, :destroy]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

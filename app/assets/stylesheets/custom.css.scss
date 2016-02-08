@@ -1,0 +1,32 @@
+
+
+
+body {
+
+  background-image: url("background.jpg");
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+.logo {
+  margin:2%;
+
+}
+
+.user_info{
+  padding:5px;
+}

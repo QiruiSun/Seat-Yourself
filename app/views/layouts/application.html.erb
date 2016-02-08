@@ -6,25 +6,30 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body >
 
+
+  <header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
     <img class="logo" src="/images/drawing.png" />
+     <div class="navbar-right" style="padding-top:5%;">
+    <p>
+      <% if current_user %>
+        Signed in as <%=  current_user.email %>. <br>
 
-      <ul>
-        <div class="user_info">
-          <p>
-            <% if current_user %>
-              Signed in as <%=  current_user.email %>. <br>
-              <%= link_to "Log out", logout_path %>
-            <% else %>
-              <%= link_to "Log in", login_path %> or <%= link_to "Sign up", new_user_path %>
+        <%= link_to "Log out", logout_path %>
+      <% else %>
+        <%= link_to "Log in", login_path %> or <%= link_to "Sign up", new_user_path %>
 
-            <% end %>
-          </p>
-         </div>
-      </ul>
+       <% end %>
+      </p>
+    </div>
+  </div>
 
-  
+
+
+</header>
+
   <% if flash[:notice] %>
     <p><%= flash[:notice]  %></p>
   <% end %>
