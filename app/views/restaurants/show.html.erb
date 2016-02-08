@@ -6,7 +6,7 @@
 <h4>Summary: </h4><%= @restaurant.summary %> <br>
 <h4>Price_range: </h4>$<%= @restaurant.price_range %> <br>
 <h4>Business Hour: </h4><%= @restaurant.open_hour  %> - <%= @restaurant.close_hour %> <br>
-
+ <h4>Category </h4>: <%= @restaurant.category.name %> <br>
 </div>
 <br>
 
@@ -41,6 +41,7 @@
                    Party_size: <%= r.party_size %> <br>
                    Restaurant: <%= r.restaurant.name %> <br>
                    Restaurant Address: <%= r.restaurant.address %> <br>
+
                  <br>
 
                </div>

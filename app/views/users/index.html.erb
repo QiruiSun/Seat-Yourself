@@ -27,7 +27,8 @@
 <%= f.text_field :price_range %> <br>
 <%= f.label :summary%> <br>
 <%= f.text_field :summary, :placeholder => "Say something"%> <br>
-
+<%= f.label :category %> <br>
+<%= f.select :category_id, Category.all.collect {|x| [x.name, x.id]} %> <br>
 <%= f.label :open_hour%> <br>
 <%= f.text_field :open_hour %> <br>
 <%= f.label :close_hour %> <br>

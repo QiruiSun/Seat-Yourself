@@ -4,7 +4,7 @@
 
 <div class="list_restaurants_in_category">
   <p>
-    <%= c.name %> <br>
+    Restaurant Name : <strong><%= link_to "#{c.name}", restaurant_path(c.id) %></strong> <br>
     <%= c.address %> <br>
     <%= c.price_range %> <br>
     <%= c.summary %> <br>

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @restaurant = @user.restaurants.build
-    @categories = Category.all
+    # @categories = Category.all
     #code
   end
 

@@ -3,7 +3,12 @@ class RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [:edit, :destroy, :show, :update]
 
   def new
-    @restaurant = Restaurant.new     #code
+    if current_user
+      @restaurant = Restaurant.new
+    else
+      redirect_to restaurants_url
+    end
+    #code
   end
 
   def index
@@ -15,7 +20,7 @@ class RestaurantsController < ApplicationController
 
     #
       end  #code
-    
+
   end
 
   def edit
@@ -48,6 +53,7 @@ class RestaurantsController < ApplicationController
   def create
 
     if current_user
+
       @user = User.find(current_user)
       @restaurant = @user.owned_restaurants.build(restaurant_params)
         if @restaurant.save
@@ -67,6 +73,6 @@ class RestaurantsController < ApplicationController
 
   private
   def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :price_range, :summary, :open_hour, :close_hour, :capacity)#code
+    params.require(:restaurant).permit(:name, :address, :price_range, :summary, :open_hour, :close_hour, :capacity, :category_id)#code
   end
 end
