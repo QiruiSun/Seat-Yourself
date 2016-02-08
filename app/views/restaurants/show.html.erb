@@ -1,3 +1,4 @@
+
 <h1>(<%= @restaurant.name %>) restaurant details</h1>
 
 
@@ -6,15 +7,60 @@
 <h4>Summary: </h4><%= @restaurant.summary %> <br>
 <h4>Price_range: </h4>$<%= @restaurant.price_range %> <br>
 <h4>Business Hour: </h4><%= @restaurant.open_hour  %> - <%= @restaurant.close_hour %> <br>
- <h4>Category </h4>: <%= @restaurant.category.name %> <br>
+<h4>Category </h4>: <%= @restaurant.category.name %> <br>
+
+
+
 </div>
+
 <br>
+
+<h3>Reviews</h3>
+
+  <p>Reviews for <%= @restaurant.name %></p>
+
+  <% @restaurant.reviews.each do |review| %>
+    <p>
+      <%= review.comment %>
+      <br>
+      <% if review.user != nil %>
+        <em> by <%= review.user.email %></em>
+        Added on: <%= review.created_at %>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+
+<% if current_user && @reserved %>
+   <h4>New Review</h4>
+
+  <%= form_for [@restaurant, @review] do |f| %>
+    <% if @review.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+            <ul>
+                    <% @review.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+    <% end %>
+
+      <div class="field">
+      <%= f.label :comment %><br />
+      <%= f.text_area :comment %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+<% else %>
+
+  <p>Please <%= link_to "log in", new_session_path %> and reserve to add a review.</p>
+<% end %>
 
 <% if current_user %>
   <%= form_for [@restaurant, @reservation] do |f| %>
-
-
-
     <%= f.label :time %> <br>
     <%= f.datetime_local_field :time, min: Date.today %> <br>
 
@@ -25,32 +71,32 @@
   <% end %>
 <% end %>
 
-  <% if user_is_owner %>
-    <%= link_to "Edit", edit_restaurant_path(@restaurant)  %> | <%= link_to "Delete", @restaurant, method: :delete, data: {confirm: "Are you sure you want to close this restaurant"} %>
-      <% if @restaurant.reservations == [] %>
-         <h4>No Reservation</h4>
-      <% else %>
-        <h4>Reservations</h4>
-          <ol>
-            <% @restaurant.reservations.each do |r| %>
-              <li>
-               <div class="list_reservations">
-                 <br>
-                   User:  <%= r.user.email %> <br>
-                   Reservation time: <%= r.time %> <br>
-                   Party_size: <%= r.party_size %> <br>
-                   Restaurant: <%= r.restaurant.name %> <br>
-                   Restaurant Address: <%= r.restaurant.address %> <br>
 
-                 <br>
+<% if user_is_owner %>
+  <%= link_to "Edit", edit_restaurant_path(@restaurant)  %> | <%= link_to "Delete", @restaurant, method: :delete, data: {confirm: "Are you sure you want to close this restaurant"} %>
+    <% if @restaurant.reservations == [] %>
+       <h4>No Reservation</h4>
+    <% else %>
+      <h4>Reservations</h4>
+        <ol>
+          <% @restaurant.reservations.each do |r| %>
+            <li>
+             <div class="list_reservations">
+               <br>
+                 User:  <%= r.user.email %> <br>
+                 Reservation time: <%= r.time %> <br>
+                 Party_size: <%= r.party_size %> <br>
+                 Restaurant: <%= r.restaurant.name %> <br>
+                 Restaurant Address: <%= r.restaurant.address %> <br>
+               <br>
 
-               </div>
-              </li>
-                <br>
-                <br>
+             </div>
+            </li>
+          <% end %>
+              <br>
+              <br>
 
-            <% end %>
-          </ol>
-      <% end %>
+    <% end %>
+        </ol>
 
-  <% end %>
+<% end %>

@@ -44,6 +44,8 @@ class RestaurantsController < ApplicationController
   def show
     if current_user
       @reservation = Reservation.new
+      @reserved = current_user.reservations.where(restaurant_id: @restaurant.id) != []
+      @review = Review.new
     end
     if user_is_owner
       @reservations = @restaurant.reservations
@@ -55,6 +57,8 @@ class RestaurantsController < ApplicationController
     if current_user
 
       @user = User.find(current_user)
+
+      # @review = @restaurant.reviews.build
       @restaurant = @user.owned_restaurants.build(restaurant_params)
         if @restaurant.save
         redirect_to restaurants_path

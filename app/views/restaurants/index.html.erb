@@ -1,4 +1,4 @@
-<h1>Restaurants</h1>
+
 
 <% if current_user %>
 <%= link_to "My Profile", users_path%> <br>
@@ -7,13 +7,16 @@
 
 <div class="navi_c">
 <% @categories.each do |c| %>
+
+
 <div class="nav_category">
+
   <%= link_to "#{c.name}", category_path(c.id) %>
+  <h1> Restaurants </h1>
+
 </div>
 <% end %>
-<div class="nav_category">
-  <%= link_to "See More", categories_url %>
-</div>
+
 </div>
 
 <div class="list_r">
@@ -24,6 +27,7 @@
       of using a Rails form helper -->
       <%= submit_tag "Search" %>
     </div>
+
   <% end %>
 
 
@@ -53,5 +57,7 @@
   <p>$<%= r.price_range %></p>
 
 </div>
+
 <% end %>
+<%= link_to "See More", categories_url %>
 </div>
